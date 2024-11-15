@@ -1,0 +1,4 @@
+SELECT PersonType,FirstName,LastName,EmailPromotion
+FROM Person.Person
+WHERE FirstName LIKE 'R%' AND EmailPromotion BETWEEN 0 AND 1 AND LastName IN ('Sam','Avalos')
+ORDER BY PersonType;
