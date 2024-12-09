@@ -1,0 +1,4 @@
+SELECT 1 + NULL Will print null.
+SELECT 1 + ISNULL(NULL,0) Will print 1. ISNULL will change null to 0. 
+SELECT ISNULL(column_name,'something to print') ISNULL will replace value null to 'something to print'.
+SELECT ISNULL(Discount,1) ISNULL will replace value null to 1.
