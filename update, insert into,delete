@@ -1,0 +1,17 @@
+CREATE TABLE abc (id int, nazwa_abc varchar(50))
+
+CREATE TABLE cba (id_cba int, nazwa_cba varchar(50))
+
+INSERT INTO abc VALUES  (1,'aaa')
+INSERT INTO abc VALUES  (2,'bbb')
+INSERT INTO abc VALUES  (3,'ccc')
+
+INSERT INTO cba VALUES  (1,'ddd')
+INSERT INTO cba VALUES  (2,'eee')
+
+SELECT * FROM cba
+SELECT * FROM abc
+
+
+UPDATE cba SET nazwa_cba='HUIMALY' WHERE id_cba=1
+DELETE FROM cba WHERE id_cba=1
