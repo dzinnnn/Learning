@@ -1,0 +1,36 @@
+SELECT * FROM	HumanResources.Employee
+ 
+SELECT CHECKSUM_AGG(BINARY_CHECKSUM(*))
+FROM HumanResources.Employee
+ --UPDATE VacationHours +1 hour for each row in column
+UPDATE HumanResources.Employee SET VacationHours=VacationHours+1
+
+--UPDATE VacationHours -1 hour for each row in column
+UPDATE HumanResources.Employee SET VacationHours=VacationHours-1
+
+--252234312 after update +1
+--259050056 before update
+
+exec sp_configure
+
+exec sp_configure'show advanced options',1
+GO 
+RECONFIGURE WITH OVERRIDE
+
+exec sp_configure'Ad Hoc Distributed Queries',1
+GO 
+RECONFIGURE WITH OVERRIDE
+
+
+-- Copy of table 
+SELECT * INTO HUMAN2 FROM HumanResources.Employee
+
+SELECT WorkOrderID,OrderQty,Podsumowanie
+FROM Production.WorkOrder
+
+ALTER TABLE Production.WorkOrder  -- ALTER to zmiana, modyfikacja
+ADD Podsumowanie AS CAST	--CAST jest funkcją SQL służącą do konwertowania jednego typu danych na inny.
+(CASE WHEN					--CASE to instrukcja warunkowa w SQL, która działa podobnie do if-else w programowaniu. Pozwala na zwracanie różnych wartości w zależności od spełnienia określonych warunków.
+OrderQty <10 THEN 'Jeden znak'
+			 ELSE 'Wiecej znakow'
+END AS VARCHAR(50));
