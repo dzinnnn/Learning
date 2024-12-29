@@ -1,0 +1,16 @@
+SELECT MiddleName,LastName,
+IIF(MiddleName='J','ok','not ok') AS Odp
+FROM Person.Person
+
+
+ALTER PROCEDURE procedura_czwarta @x nvarchar(10),@y int out --Alter zmienia albo Create tworzy Procedure, @ to parametr albo argument z określonym typem danych tu varchar(10) o imieniu Kim. Argument fitrowany jest w WHERE.
+AS 
+SELECT @y = COUNT(*) FROM Person.Person
+WHERE FirstName=@x or MiddleName=CAST(@y AS nvarchar(10))
+GO
+
+
+DECLARE @z int
+exec procedura_czwarta @x='Sam',@y=@z OUTPUT
+SELECT @z
+
