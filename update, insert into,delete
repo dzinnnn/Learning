@@ -13,5 +13,5 @@ SELECT * FROM cba
 SELECT * FROM abc
 
 
-UPDATE cba SET nazwa_cba='HUIMALY' WHERE id_cba=1
+UPDATE cba SET nazwa_cba='zmiana_gdzie_wartosc_to_1' WHERE id_cba=1
 DELETE FROM cba WHERE id_cba=1
