@@ -1,5 +1,3 @@
-
-
 SELECT DISTINCT FirstName,Title,
    CASE WHEN Title='Mr.' OR Title='Sr.' THEN 'MEZCZYZNA'
 		WHEN Title='Ms.' OR Title='Sra.' THEN 'KOBIETA'
