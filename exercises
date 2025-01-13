@@ -1,0 +1,5 @@
+Find all products that were on sale in 2005 for at least one day (SellStartDate/SellEndDate):
+You can assume that the data is correct, i.e. SellStartDate < SellEndDate.
+SELECT *   -- Selcet every row 
+FROM SalesLT.Product -- From schema SalesLT, table Product 
+WHERE SellStartDate <'2006-01-01' AND (SellEndDate >'2005-01-01' OR SellEndDate IS NULL) -- Fileters date to be less then '2006-01-01' and bigger then '2005-01-01' or it's empty. If date is empty (null) that means Product is still on sale.
