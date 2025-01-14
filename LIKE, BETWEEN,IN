@@ -2,3 +2,17 @@ SELECT PersonType,FirstName,LastName,EmailPromotion
 FROM Person.Person
 WHERE FirstName LIKE 'R%' AND EmailPromotion BETWEEN 0 AND 1 AND LastName IN ('Sam','Avalos')
 ORDER BY PersonType;
+
+
+LIKE
+SELECT *
+FROM Customers c
+WHERE c.Name LIKE '[AG]%' - Filters name's starting with 'A' or 'G' 
+
+SELECT *
+FROM Customers c
+  WHERE c.Name LIKE '[^N]%' - Filters name's that don't start with 'N'
+
+SELECT *
+FROM Customers c
+    WHERE c.Name LIKE '[A-H]%' - Filters name's that start with 'A','B','C','D','E','F','G','H'
