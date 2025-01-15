@@ -1,1 +1,5 @@
 Returns part of a character, binary, text, or image expression in SQL Server.
+SELECT name, SUBSTRING(name, 1, 1) AS Initial ,
+SUBSTRING(name, 3, 2) AS ThirdAndFourthCharacters
+FROM sys.databases  
+WHERE database_id < 5;  
