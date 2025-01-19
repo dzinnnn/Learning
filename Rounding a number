@@ -1,0 +1,2 @@
+SELECT SalesOrderID, SubTotal, SubTotal - SubTotal % 1 [SubTotalRounded] - 
+FROM [SalesLT].[SalesOrderHeader]
