@@ -14,5 +14,5 @@ SELECT [Name],
 		WHEN 'White' THEN 'Biały'
 		WHEN 'Blue' THEN 'Niebieski'
 		ELSE Color
-	END AS Translation 
+	END AS "Translation/Tłumaczenie na Polski"
 FROM SalesLT.Product
