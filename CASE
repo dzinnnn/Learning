@@ -1,7 +1,18 @@
 SELECT DISTINCT FirstName,Title,
-   CASE WHEN Title='Mr.' OR Title='Sr.' THEN 'MEZCZYZNA'
+   		CASE 
+		WHEN Title='Mr.' OR Title='Sr.' THEN 'MEZCZYZNA'
 		WHEN Title='Ms.' OR Title='Sra.' THEN 'KOBIETA'
-		ELSE 'NIE_PODANO_PLCI'
-		END AS Plec
-   FROM AdventureWorks2022.Person.Person
-   ORDER BY Title DESC
+	ELSE 'NIE_PODANO_PLCI'
+   END AS Plec
+FROM AdventureWorks2022.Person.Person
+ORDER BY Title DESC
+
+
+SELECT [Name],
+	   Color,
+	   CASE Color
+		WHEN 'White' THEN 'Biały'
+		WHEN 'Blue' THEN 'Niebieski'
+		ELSE Color
+	END AS Translation 
+FROM SalesLT.Product
