@@ -1,2 +1,4 @@
 SELECT SalesOrderID, SubTotal, SubTotal - SubTotal % 1 [SubTotalRounded] - 
 FROM [SalesLT].[SalesOrderHeader]
+Here is an example of rounding a number:
+![Learning/Zrzut ekranu 2025-01-19 204409.png]
