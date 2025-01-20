@@ -1,5 +1,4 @@
-Returns part of a character, binary, text, or image expression in SQL Server.
-SELECT name, SUBSTRING(name, 1, 1) AS Initial ,
-SUBSTRING(name, 3, 2) AS ThirdAndFourthCharacters
-FROM sys.databases  
-WHERE database_id < 5;  
+SELECT Name, SUBSTRING(name, 1, 1) AS FirstLetter ,  --Prints first letter in each row of Name column  
+SUBSTRING(Name, 2, 3) AS SecondThirdAndFourthLetter  -- Prints 3 letters, starting from secound letter in each row of Name column.
+FROM SalesLT.Product
+ORDER BY Name                                        --Orders by Name ascending
