@@ -1,0 +1,13 @@
+SELECT ABS(-88) AS absolute_value;
+SELECT ROUND(34.46785678956,2) as rounded_value;
+SELECT CEILING(7.1) rounded_up_value;
+SELECT FLOOR(87.9) rounded_down_vlaue;
+SELECT SQRT(36) square_root;
+SELECT EXP(1) AS EXPONENTIATION;
+SELECT LOG(10) AS natural_logarithm;
+SELECT POWER(5,2) AS result;
+SELECT SIGN(-1) 'SIGN_VALUE_-'
+SELECT SIGN(0) 'SIGN_VALUE_0'
+SELECT SIGN(1) 'SIGN_VALUE_+'
+SELECT LEN(FirstName) as Word_length,FirstName
+From SalesLT.Customer;
