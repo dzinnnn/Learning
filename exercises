@@ -1,5 +1,17 @@
-Find all products that were on sale in 2005 for at least one day (SellStartDate/SellEndDate):
+--Find all products that were on sale in 2005 for at least one day (SellStartDate/SellEndDate):
 You can assume that the data is correct, i.e. SellStartDate < SellEndDate.
 SELECT *   -- Selcet every row 
 FROM SalesLT.Product -- From schema SalesLT, table Product 
 WHERE SellStartDate <'2006-01-01' AND (SellEndDate >'2005-01-01' OR SellEndDate IS NULL) -- Fileters date to be less then '2006-01-01' and bigger then '2005-01-01' or it's empty. If date is empty (null) that means Product is still on sale.
+
+--Find the top 5 product models with the highest quantity sold in the state of 'California'
+
+SELECT TOP 5 pm.Name,COUNT(sod.SalesOrderDetailID) AS 'SoldCount'
+FROM SalesLT.ProductModel pm 
+JOIN SalesLT.Product p ON pm.ProductModelID=p.ProductModelID
+JOIN SalesLT.SalesOrderDetail sod ON p.ProductID=sod.ProductID
+JOIN SalesLT.SalesOrderHeader soh ON sod.SalesOrderID=soh.SalesOrderID
+JOIN SalesLT.Address a ON a.AddressID=soh.BillToAddressID
+WHERE a.StateProvince = 'California'
+GROUP BY pm.Name
+ORDER BY 2 DESC
