@@ -4,7 +4,7 @@ WHERE FirstName LIKE 'R%' AND EmailPromotion BETWEEN 0 AND 1 AND LastName IN ('S
 ORDER BY PersonType;
 
 
-LIKE
+
 SELECT *
 FROM Customers c
 WHERE c.Name LIKE '[AG]%' - Filters name's starting with 'A' or 'G' 
