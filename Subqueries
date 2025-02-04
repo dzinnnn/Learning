@@ -1,0 +1,24 @@
+--This query will retrive data from AdventureWorksLT2017.SalesLT. The task is to find the salespeople who generated the highest revenue (TotalDue from the SalesOrderHeader table) in a given product category.
+SELECT SubOuter2.*
+FROM
+(SELECT CategoryName,MAX(TotalSales) TopTotalSales
+FROM
+(SELECT c.SalesPerson, pc.Name [CategoryName], SUM(soh.TotalDue) as TotalSales
+FROM SalesLT.Customer c 
+JOIN SalesLT.SalesOrderHeader soh on soh.CustomerID = c.CustomerID
+JOIN SalesLT.SalesOrderDetail sod on sod.SalesOrderID = soh.SalesOrderID
+JOIN SalesLT.Product p on p.ProductID = sod.ProductID
+JOIN SalesLT.ProductCategory pc on pc.ProductCategoryID = p.ProductCategoryID
+GROUP BY c.SalesPerson, pc.Name)SubInner
+GROUP BY CategoryName)
+SubOuter
+JOIN
+(SELECT c.SalesPerson, pc.Name [CategoryName], SUM(soh.TotalDue) as TotalSales
+FROM SalesLT.Customer c 
+JOIN SalesLT.SalesOrderHeader soh on soh.CustomerID = c.CustomerID
+JOIN SalesLT.SalesOrderDetail sod on sod.SalesOrderID = soh.SalesOrderID
+JOIN SalesLT.Product p on p.ProductID = sod.ProductID
+JOIN SalesLT.ProductCategory pc on pc.ProductCategoryID = p.ProductCategoryID
+GROUP BY c.SalesPerson, pc.Name)
+SubOuter2 ON SubOuter2.CategoryName=SubOuter.CategoryName AND SubOuter2.TotalSales=SubOuter.TopTotalSales
+ORDER BY CategoryName
