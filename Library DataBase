@@ -1,0 +1,28 @@
+CREATE DATABASE LibraryDatabase;
+
+CREATE TABLE Author (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    FirstName NVARCHAR(50) NOT NULL,
+    LastName NVARCHAR(50) NOT NULL,
+    BirthDate DATE NULL,
+    Country NVARCHAR(50)
+);
+
+CREATE TABLE Generes (
+    GenereID INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(50) NOT NULL
+);
+
+
+CREATE TABLE Books (
+    BookID INT PRIMARY KEY IDENTITY(1,1),
+    Title NVARCHAR(300) NOT NULL,
+    PublicationDate DATE,
+    Describtion NVARCHAR(300),
+    ISBN CHAR(13) NOT NULL
+);
+
+CREATE TABLE Copies (
+    CopyID INT PRIMARY KEY IDENTITY(1,1),
+    Condition NVARCHAR(50)
+);
