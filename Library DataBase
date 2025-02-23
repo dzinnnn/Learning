@@ -1,4 +1,8 @@
+--Create data base LibraryDatabase
+
 CREATE DATABASE LibraryDatabase;
+------------------------------------
+--Create table Author
 
 CREATE TABLE Author (
     ID INT PRIMARY KEY IDENTITY(1,1),
@@ -7,12 +11,15 @@ CREATE TABLE Author (
     BirthDate DATE NULL,
     Country NVARCHAR(50)
 );
+------------------------------------
+--Create table Generes
 
 CREATE TABLE Generes (
     GenereID INT PRIMARY KEY IDENTITY(1,1),
     Name NVARCHAR(50) NOT NULL
 );
-
+------------------------------------
+--Create table Books
 
 CREATE TABLE Books (
     BookID INT PRIMARY KEY IDENTITY(1,1),
@@ -21,8 +28,70 @@ CREATE TABLE Books (
     Describtion NVARCHAR(300),
     ISBN CHAR(13) NOT NULL
 );
+------------------------------------
+--Create table Copies
 
 CREATE TABLE Copies (
     CopyID INT PRIMARY KEY IDENTITY(1,1),
     Condition NVARCHAR(50)
 );
+------------------------------------
+--Create table Users
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(255),
+    Surename NVARCHAR(255),
+    Email NVARCHAR(255),
+    PhoneNumber VARCHAR(255),
+
+);
+------------------------------------
+-- Create table Adresses
+
+CREATE TABLE Addresses(
+    AddressId INT PRIMARY KEY IDENTITY(1,1),
+    City NVARCHAR(255) NOT NULL,
+    Street NVARCHAR(255)NOT NULL,
+    HouseNumber INT NOT NULL,
+    Country NVARCHAR(255) NOT NULL,
+    UserID INT,
+    CONSTRAINT FK_USERS_ADDRESSES FOREIGN KEY (UserID) REFERENCES Users(UserID)
+
+);
+
+------------------------------------
+--Modify table Books
+
+ALTER TABLE Books 
+ADD AuthorID INT;
+
+ALTER TABLE Books 
+ADD CONSTRAINT FK_BOOKS_AUTHOR FOREIGN KEY (AuthorID) REFERENCES Author(ID);
+
+
+ALTER TABLE Books 
+ADD GeneresID INT;
+ 
+ALTER TABLE Books
+ADD CONSTRAINT FK_BOOKS_GENERES FOREIGN KEY (GeneresID) REFERENCES Generes(GenereID);
+
+------------------------------------
+--Modify table Copies
+
+ALTER TABLE Copies
+ADD BookID INT ;
+
+ALTER TABLE Copies 
+ADD CONSTRAINT FK_COPIES_BOOKS FOREIGN KEY (BookID) REFERENCES Books(BookID);
+
+------------------------------------
+-- Create table Loans to make constraints betweetn tables User and Copy 
+CREATE TABLE Loans (
+    LoanID INT PRIMARY KEY IDENTITY(1,1),
+    UserID INT,
+    CopyID INT,
+    LoanDate DATE,
+    ReturnDate DATE NULL,
+    CONSTRAINT FK_LOANS_USERS FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    CONSTRAINT FK_LOANS_COPIES FOREIGN KEY (CopyID) REFERENCES Copies(CopyID)
+)
