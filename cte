@@ -1,0 +1,12 @@
+--CTE
+WITH a AS
+	(
+	SELECT YEAR(s.OrderDate) yr,
+		   AVG(s.SubTotal) avgSub
+	FROM SalesLT.SalesOrderHeader s 
+	GROUP BY YEAR(s.OrderDate)
+	)
+SELECT * 
+FROM SalesLT.SalesOrderHeader soh
+JOIN a ON a.yr = YEAR(soh.OrderDate)
+WHERE soh.SubTotal >2 * a.avgSub 
